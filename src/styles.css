@@ -1,0 +1,65 @@
+body {
+  font-family: Arial;
+}
+
+.App {
+  text-align: center;
+}
+
+.container {
+}
+
+/***********Title******************/
+.title-container {
+  border: 2px solid red;
+  width: 100%;
+  text-align: center;
+}
+
+/**********Challenge slider*******/
+.challenge-slider {
+  border: 2px solid blue;
+  height: 100%;
+  width: 100%;
+  font-size: 14px;
+}
+
+/*******Challenge slide********/
+.challenge-slide {
+  border: 1px solid green;
+  height: 180px;
+  margin: 10px;
+  padding: 5px;
+}
+
+.challenge-title {
+  min-height: 100px;
+  padding-left: 5px;
+}
+
+.challenge-footer {
+  border-top: 1px solid gray;
+}
+
+.challenge-type {
+  float: left;
+  width: 45%;
+  height: 100%;
+  border-right: 1px solid gray;
+}
+
+.challenge-season {
+  float: right;
+  width: 50%;
+  text-align: center;
+}
+
+.dif-3 {
+  background: lightblue;
+}
+
+.dif-4 {
+  background: red;
+}
+
+/********Slider**********/
