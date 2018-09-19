@@ -1,5 +1,16 @@
+html,
 body {
-  font-family: Arial;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .App {
@@ -7,6 +18,16 @@ body {
 }
 
 .container {
+  flex: 1 0 auto;
+  padding: 10px;
+}
+
+.center {
+  text-align: center;
+}
+
+.wrapper {
+  flex: 1;
 }
 
 /***********Title******************/
@@ -29,7 +50,12 @@ body {
   border: 2px solid;
   height: 200px;
   margin: 10px;
-  padding: 5px;
+  cursor: pointer;
+}
+
+.challenge-slide:hover {
+  transition: 0.2s;
+  transform: scale(1.05);
 }
 
 .challenge-title {
@@ -40,6 +66,7 @@ body {
 .challenge-footer {
   border-top: 1px solid gray;
   text-align: center;
+  height: 50px;
 }
 
 .challenge-type {
@@ -70,4 +97,28 @@ body {
   border-color: green;
 }
 
+/********Active card******/
+.active.challenge-slide {
+  transform: scale(1.05);
+  border-width: 3px;
+}
+
 /********Slider**********/
+
+/*******Load gif********/
+.load-gif {
+  width: 32px;
+  height: 32px;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+}
+
+/********Footer********/
+.footer {
+  flex-shrink: 0;
+  height: 20vh;
+  background: gray;
+  color: white;
+  text-align: center;
+}

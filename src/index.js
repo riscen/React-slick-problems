@@ -11,9 +11,10 @@ import { Provider } from "react-redux";
 import configureStore from "./configureStore";
 
 import App from "./components/App";
+import Footer from "./components/Footer";
 import "./styles.css";
 
-import axios from "axios";
+//import axios from "axios";
 
 //import axios from "axios";
 
@@ -44,10 +45,18 @@ printContests();*/
 
 const store = configureStore();
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(
+const withFooter = WrappedComponent => () => [
+  <WrappedComponent key="1" />,
+  <Footer key="2" />
+];
+
+const Wrapper = () => (
   <Provider store={store}>
     <App />
-  </Provider>,
-  rootElement
+  </Provider>
 );
+
+const WrapperWithFooter = withFooter(Wrapper);
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<WrapperWithFooter />, rootElement);

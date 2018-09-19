@@ -37,15 +37,13 @@ const getContests = () => {
 
 export function fetchChallenges(dispatch) {
   return dispatch => {
-    //dispatch(requestChallenges());
+    dispatch(requestChallenges());
     return getContests()
       .then(response => {
-        //console.log(response.data);
         dispatch(receiveChallenges(response.data["result"]));
       })
       .catch(error => {
-        console.error(error);
-        //dispatch(errorChallenges());
+        dispatch(errorChallenges());
       });
   };
 }

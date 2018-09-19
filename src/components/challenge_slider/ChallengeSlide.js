@@ -2,21 +2,26 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const ChallengeSlide = props => {
+  const challenge = props.challenge;
   return (
-    <div>
+    <div onClick={item => props.handleClick(challenge)}>
       <div
-        key={props.index}
-        className={"challenge-slide " + props.item.difficulty}
+        key={challenge.key}
+        className={
+          props.activeCard && props.activeCard === challenge.key
+            ? "challenge-slide " + challenge.difficulty + " active"
+            : "challenge-slide " + challenge.difficulty
+        }
       >
         <div className="challenge-title">
-          <h3>{props.item.challengeName}</h3>
+          <h3>{challenge.challengeName}</h3>
         </div>
         <div className="challenge-footer">
           <div className="challenge-type">
-            <span>{props.item.type}</span>
+            <span>{challenge.type}</span>
           </div>
           <div className="challenge-season">
-            <span>{props.item.season}</span>
+            <span>{challenge.season}</span>
           </div>
         </div>
       </div>
@@ -25,7 +30,9 @@ const ChallengeSlide = props => {
 };
 
 ChallengeSlide.propTypes = {
-  item: PropTypes.object
+  challenge: PropTypes.object,
+  handleClick: PropTypes.func,
+  activeCard: PropTypes.any
 };
 
 export default ChallengeSlide;
