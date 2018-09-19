@@ -26,8 +26,8 @@ body {
 
 /*******Challenge slide********/
 .challenge-slide {
-  border: 1px solid green;
-  height: 180px;
+  border: 2px solid;
+  height: 200px;
   margin: 10px;
   padding: 5px;
 }
@@ -39,27 +39,35 @@ body {
 
 .challenge-footer {
   border-top: 1px solid gray;
+  text-align: center;
 }
 
 .challenge-type {
   float: left;
-  width: 45%;
+  width: 50%;
   height: 100%;
   border-right: 1px solid gray;
 }
 
 .challenge-season {
   float: right;
-  width: 50%;
-  text-align: center;
+  width: 45%;
 }
 
 .dif-3 {
-  background: lightblue;
+  border-color: blue;
 }
 
 .dif-4 {
-  background: red;
+  border-color: red;
+}
+
+.dif-2 {
+  border-color: yellow;
+}
+
+.dif-1 {
+  border-color: green;
 }
 
 /********Slider**********/

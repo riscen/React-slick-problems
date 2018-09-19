@@ -1,18 +1,51 @@
-import CHALLENGE_ACTIONS from "./constants";
+import axios from "axios";
+import { CHALLENGE_ACTIONS, CHALLENGE_URL } from "./constants";
 
-//export const requestChallenge = payload => ({type:})
+export function requestChallenges() {
+  console.log("REQUEST CHALLENGE");
+  return {
+    type: CHALLENGE_ACTIONS.REQUEST_CHALLENGE,
+    status: "loading"
+  };
+}
 
-export const request = data => ({
-  type: CHALLENGE_ACTIONS.REQUEST_CHALLENGE,
-  payload: data
-});
+export function receiveChallenges(challenges) {
+  console.log("SUCCESS CHALLENGE");
+  return {
+    type: CHALLENGE_ACTIONS.SUCCESS_CHALLENGE,
+    status: "success",
+    payload: challenges
+  };
+}
 
-export const success = data => ({
-  type: CHALLENGE_ACTIONS.SUCCESS_CHALLENGE,
-  payload: data
-});
+export function errorChallenges() {
+  console.log("ERROR CHALLENGE");
+  return {
+    type: CHALLENGE_ACTIONS.ERROR_CHALLENGE,
+    status: "error",
+    message: "Error loading challenges"
+  };
+}
 
-export const error = data => ({
-  type: CHALLENGE_ACTIONS.ERROR_CHALLENGE,
-  payload: data
-});
+const getContests = () => {
+  try {
+    return axios.get(CHALLENGE_URL);
+  } catch (error) {
+    console.error("Here: " + error);
+  }
+};
+
+export function fetchChallenges(dispatch) {
+  return dispatch => {
+    //dispatch(requestChallenges());
+    return getContests()
+      .then(response => {
+        //console.log(response.data);
+        dispatch(receiveChallenges(response.data["result"]));
+      })
+      .catch(error => {
+        console.error(error);
+        //dispatch(errorChallenges());
+      });
+  };
+}

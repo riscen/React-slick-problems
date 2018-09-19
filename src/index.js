@@ -8,14 +8,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import store from "./store";
+import configureStore from "./configureStore";
 
 import App from "./components/App";
 import "./styles.css";
 
-/*import axios from "axios";
+import axios from "axios";
 
-const getContests = () => {
+//import axios from "axios";
+
+/*const getContests = () => {
   try {
     return axios.get("https://codeforces.com/api/contest.list?gym=true");
   } catch (error) {
@@ -23,14 +25,13 @@ const getContests = () => {
   }
 };
 
-const printContests = async () => {
+const printContests = () => {
   const contests = getContests()
     .then(response => {
       if (response.data) {
         console.log("Data: " + response.data["result"].length);
-        /*response.data["result"].map(current => {
+        response.data["result"].forEach(current => {
           console.log(current.name);
-          return 0;
         });
       }
     })
@@ -41,10 +42,12 @@ const printContests = async () => {
 
 printContests();*/
 
+const store = configureStore();
+
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <Provider store={store}>
-    (<App />
+    <App />
   </Provider>,
   rootElement
 );
