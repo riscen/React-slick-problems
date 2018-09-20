@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ChallengeSlider from "./challenge_slider/ChallengeSlider";
 import { fetchChallenges } from "../actions/challenge/actions";
+import { fetchContestants } from "../actions/contestants/actions";
 
 //import getChallenges from "../Axios/challengeRequest";
 //import doRequest from "../Axios/request";
@@ -10,7 +11,8 @@ import { fetchChallenges } from "../actions/challenge/actions";
 const mapDispatchToProps = dispatch => {
   console.log("MapDispatchToProps");
   return {
-    getChallenges: () => dispatch(fetchChallenges())
+    getChallenges: () => dispatch(fetchChallenges()),
+    getContestants: challengeId => dispatch(fetchContestants(challengeId))
   };
 };
 
@@ -37,6 +39,8 @@ const mapStateToProps = state => {
 class AppConnected extends Component {
   constructor() {
     super();
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentWillMount() {
@@ -46,6 +50,10 @@ class AppConnected extends Component {
      * This way we get all the initial data we will use.
      */
     this.props.getChallenges();
+  }
+
+  handleClick(challenge) {
+    this.props.getContestants(challenge.key);
   }
 
   render() {
@@ -60,7 +68,10 @@ class AppConnected extends Component {
               <img src={require("../media/ajax-loader.gif")} alt="Loading" />
             </div>
           ) : (
-            <ChallengeSlider challenges={this.props.challenges} />
+            <ChallengeSlider
+              challenges={this.props.challenges}
+              handleClick={this.handleClick}
+            />
           )}
         </div>
       </div>

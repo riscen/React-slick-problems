@@ -19,6 +19,7 @@ class ChallengeSlider extends Component {
     this.setState({
       activeCard: challenge.key
     });
+    this.props.handleClick(challenge);
   }
 
   render() {

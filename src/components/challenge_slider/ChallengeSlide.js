@@ -14,7 +14,7 @@ const ChallengeSlide = props => {
         }
       >
         <div className="challenge-title">
-          <h3>{challenge.challengeName}</h3>
+          <span>{challenge.challengeName}</span>
         </div>
         <div className="challenge-footer">
           <div className="challenge-type">

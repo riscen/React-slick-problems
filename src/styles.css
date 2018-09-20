@@ -5,6 +5,7 @@ body {
 
 body {
   margin: 0;
+  font-family: Arial;
 }
 
 #root {
@@ -59,8 +60,10 @@ body {
 }
 
 .challenge-title {
-  min-height: 100px;
+  min-height: 65%;
   padding-left: 5px;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .challenge-footer {
