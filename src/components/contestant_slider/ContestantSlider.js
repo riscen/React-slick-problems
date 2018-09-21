@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import PropType from "prop-types";
 import Slider from "react-slick";
-import ChallengeSlide from "./ChallengeSlide";
+import ContestantSlide from "./ContestantSlide";
 
 import "slick-carousel/slick/slick.css";
 
-class ChallengeSlider extends Component {
+class ContestantSlider extends Component {
   constructor() {
     super();
     this.state = {
@@ -15,11 +15,10 @@ class ChallengeSlider extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(challenge) {
+  handleClick(contestant) {
     this.setState({
-      activeCard: challenge.key
+      activeCard: contestant.key
     });
-    this.props.handleClick(challenge);
   }
 
   render() {
@@ -42,22 +41,22 @@ class ChallengeSlider extends Component {
         }
       ]
     };
-    const challenges = this.props.challenges;
+    const contestants = this.props.contestants;
     let sliders = [];
-    if (challenges) {
-      sliders = challenges.map((current, index) => {
-        const challengeData = {
-          key: current["id"],
-          challengeName: current["name"],
-          difficulty: "dif-" + current["difficulty"],
-          type: current["kind"],
-          description: current["description"],
-          season: current["season"]
+    if (contestants) {
+      //console.log(contestants);
+      sliders = contestants.map((current, index) => {
+        const contestantData = {
+          key: current.rank,
+          teamName: current.party.teamName,
+          ghost: current.party.ghost,
+          members: current["party"]["members"],
+          points: current["points"]
         };
         return (
-          <ChallengeSlide
-            key={challengeData.key}
-            challenge={challengeData}
+          <ContestantSlide
+            key={contestantData.key}
+            contestant={contestantData}
             handleClick={this.handleClick}
             activeCard={this.state.activeCard}
           />
@@ -65,16 +64,15 @@ class ChallengeSlider extends Component {
       });
     }
     return (
-      <div className="challenge-slider">
+      <div className="contestant-slider">
         <Slider {...settings}>{sliders}</Slider>
       </div>
     );
   }
 }
 
-ChallengeSlider.propTypes = {
-  challenges: PropType.array,
-  handleClick: PropType.func
+ContestantSlider.propTypes = {
+  contestants: PropType.array
 };
 
-export default ChallengeSlider;
+export default ContestantSlider;

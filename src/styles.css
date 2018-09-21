@@ -106,12 +106,87 @@ body {
   border-width: 3px;
 }
 
-/********Slider**********/
+/**********Contestant slider*******/
+.contestant-slider {
+  border: 2px solid green;
+  height: 100%;
+  width: 100%;
+  font-size: 14px;
+}
+
+/*******Contestant slide********/
+.contestant-slide {
+  border: 2px solid;
+  height: 200px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.contestant-slide:hover {
+  transition: 0.2s;
+  transform: scale(1.05);
+}
+
+.contestant-title {
+  color: white;
+  height: 15%;
+  text-align: center;
+  vertical-align: sub;
+  padding: 5%;
+}
+
+.contestant-rank {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.contestant-points {
+  padding-left: 5px;
+}
+
+.ghost {
+  border-color: black;
+}
+
+.no-ghost {
+  border-color: darkblue;
+}
+
+.ghost > .contestant-title,
+.contestant-team {
+  background-color: black;
+  border: 1px solid black;
+}
+
+.no-ghost > .contestant-title,
+.contestant-team {
+  background-color: darkblue;
+  border: 1px solid darkblue;
+}
+
+.contestant-team {
+  height: 10%;
+  text-align: center;
+  padding: 5%;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: white;
+}
+
+.contestant-members {
+  max-height: 40%;
+}
+
+/********Active card******/
+.active.challenge-slide {
+  transform: scale(1.05);
+  border-width: 3px;
+}
 
 /*******Load gif********/
 .load-gif {
-  width: 32px;
-  height: 32px;
+  width: 50px;
+  height: 50px;
   position: fixed;
   top: 30%;
   left: 50%;

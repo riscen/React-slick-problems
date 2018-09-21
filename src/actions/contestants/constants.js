@@ -1,6 +1,6 @@
 export const contestantsUrl = contestId => {
   return (
-    "http://codeforces.com/api/contest.standings?contestId=" +
+    "https://codeforces.com/api/contest.standings?contestId=" +
     contestId +
     "&from=1&count=10&showUnofficial=true"
   );

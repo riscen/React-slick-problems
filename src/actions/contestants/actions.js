@@ -41,11 +41,10 @@ export function fetchContestants(contestId, dispatch) {
     dispatch(requestContestants());
     return getContestants(contestId)
       .then(response => {
-        console.log(response);
-        //dispatch(receiveContestants(response.data["result"]));
+        dispatch(receiveContestants(response.data["result"]));
       })
       .catch(error => {
-        console.error("fetch: " + error.status);
+        console.error("fetch: " + error);
         dispatch(errorContestants());
       });
   };
