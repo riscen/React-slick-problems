@@ -8,21 +8,21 @@ const contestantReducer = (state = initialState, action) => {
       console.log("Request contestant");
       return {
         ...state,
-        status: action.status
+        status: action.payload.status
       };
     case CONTESTANT_ACTIONS.SUCCESS_CONTESTANT:
       console.log("Success contestant");
       return {
         ...state,
-        data: [...state.data, action.payload],
-        status: action.status
+        contestants: action.payload.contestants,
+        status: action.payload.status
       };
     case CONTESTANT_ACTIONS.ERROR_CONTESTANT:
       console.log("Error contestant");
       return {
         ...state,
-        status: action.status,
-        message: action.message
+        contestants: action.payload.contestants,
+        status: action.payload.status
       };
     default:
       console.log("Default challenge state");

@@ -5,10 +5,6 @@ import ContestantSlider from "./contestant_slider/ContestantSlider";
 import { fetchChallenges } from "../actions/challenge/actions";
 import { fetchContestants } from "../actions/contestants/actions";
 
-//import getChallenges from "../Axios/challengeRequest";
-//import doRequest from "../Axios/request";
-//import CHALLENGE_URL from "../Axios/constants";
-
 const mapDispatchToProps = dispatch => {
   console.log("MapDispatchToProps");
   return {
@@ -18,8 +14,8 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mergeChallengeResponse = challengeReducer => {
-  if (challengeReducer.data.length > 0) {
-    const challenges = challengeReducer.data[0].slice(0, 20);
+  if (challengeReducer.challenges && challengeReducer.challenges.length > 0) {
+    const challenges = challengeReducer.challenges.slice(10, 20);
     return {
       challenges: challenges,
       challenge_status: challengeReducer.status
@@ -32,12 +28,15 @@ const mergeChallengeResponse = challengeReducer => {
 };
 
 const mergeContestantResponse = contestantReducer => {
-  if (contestantReducer.data.length > 0) {
-    //console.log(contestantReducer.data["0"].rows);
+  if (
+    contestantReducer.contestants &&
+    contestantReducer.contestants.rows.length > 0
+  ) {
     const contestants =
-      contestantReducer.data["0"].rows.length >= 5
-        ? contestantReducer.data["0"].rows.slice(0, 5)
-        : contestantReducer.data["0"].rows;
+      contestantReducer.contestants.rows.length >= 5
+        ? contestantReducer.contestants.rows.slice(0, 10)
+        : contestantReducer.contestants.rows;
+    console.log(contestants);
     return {
       contestants: contestants,
       contestant_status: contestantReducer.status
@@ -78,6 +77,8 @@ class AppConnected extends Component {
   handleChallengeClick(challenge) {
     this.props.getContestants(challenge.key);
   }
+
+  loadData(Child) {}
 
   render() {
     return (

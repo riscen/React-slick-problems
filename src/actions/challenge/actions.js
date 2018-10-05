@@ -5,7 +5,9 @@ export function requestChallenges() {
   console.log("REQUEST CHALLENGE");
   return {
     type: CHALLENGE_ACTIONS.REQUEST_CHALLENGE,
-    status: "loading"
+    payload: {
+      status: "loading"
+    }
   };
 }
 
@@ -13,8 +15,10 @@ export function receiveChallenges(challenges) {
   console.log("SUCCESS CHALLENGE");
   return {
     type: CHALLENGE_ACTIONS.SUCCESS_CHALLENGE,
-    status: "success",
-    payload: challenges
+    payload: {
+      challenges: challenges,
+      status: "success"
+    }
   };
 }
 
@@ -22,23 +26,25 @@ export function errorChallenges() {
   console.log("ERROR CHALLENGE");
   return {
     type: CHALLENGE_ACTIONS.ERROR_CHALLENGE,
-    status: "error",
-    message: "Error loading challenges"
+    payload: {
+      status: "error",
+      message: "Error loading challenges"
+    }
   };
 }
 
-const getContests = () => {
+const getChallenges = () => {
   try {
     return axios.get(CHALLENGE_URL);
   } catch (error) {
-    console.error("Here: " + error);
+    console.error(error);
   }
 };
 
 export function fetchChallenges(dispatch) {
   return dispatch => {
     dispatch(requestChallenges());
-    return getContests()
+    return getChallenges()
       .then(response => {
         dispatch(receiveChallenges(response.data["result"]));
       })

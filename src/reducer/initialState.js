@@ -1,4 +1,1 @@
-export const initialState = {
-  data: [],
-  status: ""
-};
+export const initialState = {};

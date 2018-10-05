@@ -174,7 +174,25 @@ body {
 }
 
 .contestant-members {
-  max-height: 40%;
+  max-height: 60%;
+}
+
+.member-container {
+  padding: 10%;
+}
+
+.member-container-title {
+  font-size: 20px;
+}
+
+.member-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.member-name {
+  font-weight: bold;
 }
 
 /********Active card******/

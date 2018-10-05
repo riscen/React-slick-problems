@@ -6,8 +6,8 @@ import ChallengeSlide from "./ChallengeSlide";
 import "slick-carousel/slick/slick.css";
 
 class ChallengeSlider extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       activeCard: null
     };
@@ -28,7 +28,8 @@ class ChallengeSlider extends Component {
       arrows: true,
       infinite: true,
       speed: 500,
-      slidesToShow: 4,
+      rows: 1,
+      slidesToShow: 3,
       slidesToScroll: 1,
       repsonsive: [
         {

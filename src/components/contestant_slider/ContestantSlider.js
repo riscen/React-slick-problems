@@ -6,8 +6,8 @@ import ContestantSlide from "./ContestantSlide";
 import "slick-carousel/slick/slick.css";
 
 class ContestantSlider extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       activeCard: null
     };
@@ -44,14 +44,14 @@ class ContestantSlider extends Component {
     const contestants = this.props.contestants;
     let sliders = [];
     if (contestants) {
-      //console.log(contestants);
       sliders = contestants.map((current, index) => {
         const contestantData = {
           key: current.rank,
           teamName: current.party.teamName,
           ghost: current.party.ghost,
-          members: current["party"]["members"],
-          points: current["points"]
+          members: current.party.members,
+          points: current.points,
+          penalty: current.penalty
         };
         return (
           <ContestantSlide

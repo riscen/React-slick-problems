@@ -8,13 +8,13 @@ const challengeReducer = (state = initialState, action) => {
       console.log("Request challenge");
       return {
         ...state,
-        status: action.status
+        status: action.payload.status
       };
     case CHALLENGE_ACTIONS.SUCCESS_CHALLENGE:
       console.log("Success challenge");
       return {
         ...state,
-        data: [...state.data, action.payload],
+        challenges: action.payload.challenges,
         status: action.status
       };
     case CHALLENGE_ACTIONS.ERROR_CHALLENGE:

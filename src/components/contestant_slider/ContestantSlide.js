@@ -20,11 +20,19 @@ const ContestantSlide = props => {
           <span className="contestant-rank">{contestant.key}</span>
           <span className="contestant-points">{contestant.points} pts</span>
         </div>
-        <div className="contestant-team">
-          <span>{contestant.teamName}</span>
-        </div>
         <div className="contestant-members">
           <MemberTeamList members={contestant.members} />
+        </div>
+        {contestant.teamName ? (
+          <div className="contestant-team">
+            <span>{contestant.teamName}</span>
+          </div>
+        ) : (
+          <div />
+        )}
+        <div className="member-container-footer center">
+          <span>Penalty: </span>
+          <span>{contestant.penalty}</span>
         </div>
       </div>
     </div>

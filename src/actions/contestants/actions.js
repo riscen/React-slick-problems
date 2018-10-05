@@ -5,7 +5,9 @@ export function requestContestants() {
   console.log("REQUEST CONTESTANT");
   return {
     type: CONTESTANT_ACTIONS.REQUEST_CONTESTANT,
-    status: "loading"
+    payload: {
+      status: "loading"
+    }
   };
 }
 
@@ -13,8 +15,10 @@ export function receiveContestants(contestants) {
   console.log("SUCCESS CONTESTANT");
   return {
     type: CONTESTANT_ACTIONS.SUCCESS_CONTESTANT,
-    status: "success",
-    payload: contestants
+    payload: {
+      status: "success",
+      contestants: contestants
+    }
   };
 }
 
@@ -22,8 +26,10 @@ export function errorContestants() {
   console.log("ERROR CONTESTANT");
   return {
     type: CONTESTANT_ACTIONS.ERROR_CONTESTANT,
-    status: "error",
-    message: "Error loading contestants"
+    payload: {
+      status: "error",
+      message: "Error loading contestants"
+    }
   };
 }
 
@@ -32,7 +38,7 @@ const getContestants = contestId => {
     console.log(contestantsUrl(contestId));
     return axios.get(contestantsUrl(contestId));
   } catch (error) {
-    console.error("Here: " + error);
+    console.error(error);
   }
 };
 
